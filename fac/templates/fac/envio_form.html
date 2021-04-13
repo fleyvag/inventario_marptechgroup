@@ -1,0 +1,98 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <!-- {% if obj %} 
+      <form method="POST" role="form" class="form-inline" action="{% url 'inv:producto_edit' obj.pk %}" >
+        {% else %} -->
+      <form method="POST" role="form"  id="formulario" class="form-inline" action="{% url  'fac:envio_new' %}" >
+      
+          <!-- {% endif %} -->
+          {% csrf_token%}
+        <div class="col-xl-12 col-md-12 mb-12">
+          {% if  obj %}
+          
+          <div class="card border-left-warning shadow h-100 py-2">
+            {% else %}
+            
+            <div class="card border-left-success shadow h-100 py-2">
+            {% endif %}
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  {% if obj %} Editar {% else %} Nuevo   {%  endif %}Envio
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <div class="row">
+                      
+                    <div class="col-6">
+                      <div class="form-group">
+                          <label for="id_fecha_compra">detalle:</label>
+                          {{form.detalle}}
+                          
+                      </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="id_descripcion">n° detalle compra:</label>
+                      {{form.ncompra}}
+                  </div>
+                 
+                      <div class="form-group">
+                        {% if  not obj %}
+                          <label class="" >estado</label>
+                          <select name="condicion" id="id_condicion" class="form-control" >
+                          <option selected>en progreso</option>
+                        </select>
+                          {%else%}
+                          <label class="">estado</label>
+                          <select name="condicion" id="id_condicion" class="form-control" >
+                          <option selected>en progreso</option>
+                        </select>
+                          <option value="entregado correctamente"> entregado correcta</option>
+                          <option value="entregado con retraso"> entregado con retraso</option>
+                          <option value="cancelado">cancelado</option>
+                         </select>
+                         {%endif%}
+                      </div>
+                      <div class="form-group">
+                          <label for="id_descripcion">Fecha programada:</label>
+                          
+                          <input type="date" name="fecha_programada" class="form-control" id="id_fecha_programada">   
+                      </div>
+                      <div class="form-group">
+                        <label for="id_descripcion">Fecha que se entrego:</label>
+                        <input type="date" name="fecha_revisada" class="form-control" id="id_fecha_revisada">
+                    </div>
+                  </div>
+              </div>
+                    
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <div class="row">
+                      <div class="col">
+                          <button type="submit" onclick="verificar()"  class="btn btn-danger"><span class="fa fa-save"></span>Guardar</button>
+                          <button type="button" class="btn btn-success" onClick="return cerrar_modal()">
+                            Cancelar
+                          </button>
+  
+                        </div>
+                  </div>           
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>  
+  </div>
+  <script>
+    function verificar() {
+      var fecha=$('#id_fecha_programada').val()
+      if(fecha ==""|| fecha == 0){
+        alert('ingrese una fecha valida')
+      }
+   
+  }
+
+
+  </script>

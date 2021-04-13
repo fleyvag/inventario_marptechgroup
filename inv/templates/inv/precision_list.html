@@ -1,0 +1,90 @@
+{% extends 'base/base.html'%}
+{% comment %} <style type="text/css">
+  table{
+  table-layout: fixed;
+}
+
+.tablaestatica th{
+  width: 130px;
+  overflow: auto;
+  border: 1px solid;
+}
+</style> {% endcomment %}
+{% block page_content %}
+ <!-- Dropdown Card Example -->
+ <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Historial de confiabilidad</h6>
+      <div class="dropdown no-arrow">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+        </a>
+        <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+          <div class="dropdown-header">Acciones:</div>
+          <a class="dropdown-item" href="#" onClick=" return abrir_modal('{% url 'inv:producto_new' %}')" ><i class="far fa-calendar-plus"></i> Nueva</a>
+          <a class="dropdown-item" href="{% url 'inv:productos_print' %}" target="reportes"><i class="fas fa-print"></i> Listado</a> 
+          
+        </div> -->
+      </div>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+        {%if not obj %}
+        <div class="alert alert-info">No hay Registros</div>
+        {% endif %}
+        
+        <table class="table table-striped table-hover" style="max-width:100vp;" >
+            <thead>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>F.creado</th>
+                <th>total de referencias</th>
+                <th>Total de diferencias</th>
+                <th  >confiabilidad </th>
+                
+            </thead>
+            <tbody>
+                {%for item in obj  %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.descripcion}}</td>
+                    <td>{{item.fc|date:"d/m/Y H:i:s"}}</td>
+                    <td>{{item.total}}</td>
+                    <td>{{item.diferencias}}</td>
+                    <td >{{item.porcentaje}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+
+
+        
+    </div>
+  </div>
+{% endblock %}
+{% block js_page %}
+<script>
+//llamar al datatable de jquery   
+
+$(document).ready( function () {
+    $('.table').DataTable();
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+
+
+ 
+
+
+})
+
+
+} );
+</script>
+{% endblock %}
+
+
+
+
+ 

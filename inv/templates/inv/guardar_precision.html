@@ -1,0 +1,84 @@
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+       
+      <form method="POST" role="form" class="form-inline" action="{% url  'inv:guardar_preci' %}" >
+
+          {% csrf_token%}
+        <div class="col-xl-12 col-md-12 mb-12">
+          
+            
+            <div class="card border-left-success shadow h-100 py-2">
+            
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  nueva historia
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <div class="row">
+
+                    {{form.as_p}}
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <div class="row">
+                      <div class="col-12">
+                          <button type="submit" class="btn btn-danger"><span class="fa fa-save"></span>Guardar</button>
+                          <button type="button" class="btn btn-success" onClick="return cerrar_modal()">
+                            Cancelar
+                          </button>
+  
+                        </div>
+                  </div>           
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>  
+  </div>
+<script>
+   
+//    var sum = 0;
+//    var cuenta=0
+//  $('.subtotal').each(function() {
+//   sum += parseFloat($(this).val());
+//   if($(this).val()>0){
+//   cuenta=cuenta+1}
+
+// });
+var nFilas = $("#mitabla tr").length;
+
+
+
+var conteo=0;
+var contador=0
+
+$('.conteo').each(function() {
+  
+  conteo += parseFloat($(this).val());
+  if($(this).val()>0){
+  contador=contador+1}
+});
+
+var n1=$("#totalcampos").val()
+$('#id_total').val(nFilas-1)
+$('#id_diferencias').val(contador)
+var total=$('#id_total').val()
+var diferencias= $('#id_diferencias').val();
+if(diferencias == 0 ){
+
+  $('#id_porcentaje').val("100")
+}else{
+  var porcentaje=((1-(diferencias/(total)))*100)
+  var valor=porcentaje.toFixed(2)
+$('#id_porcentaje').val(valor)
+}
+
+
+
+
+
+
+  </script>
