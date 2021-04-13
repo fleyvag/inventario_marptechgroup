@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_userforeignkey.middleware.UserForeignKeyMiddleware',
-    'whitenoise.middleware.WhitenoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     
 ]
 
@@ -92,8 +92,8 @@ DATABASES = {
         'HOST':'localhost',
         'USER':'postgres',
         'PASSWORD':'123456',
-        'PORT':'8080',
-        # 5432
+        'PORT':'5432',
+        # 
         
     }
 }
