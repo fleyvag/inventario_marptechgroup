@@ -315,29 +315,6 @@ class precisionlist(LoginRequiredMixin,sin_privilegios,generic.ListView):
     context_object_name="obj"
     login_url="bases:login"
 
-# class envioView(LoginRequiredMixin,sin_privilegios,generic.ListView):
-#     permission_required="inv.view_categoria"
-#     model=envio
-#     template_name="inv/envio_list.html"
-#     context_object_name="obj"
-#     login_url="bases:login"
-# class envioNew(LoginRequiredMixin,sin_privilegios,generic.CreateView):
-#     permission_required="inv.view_categoria"
-#     model=envio
-#     template_name="inv/envio_form.html"
-#     context_object_name="obj"
-#     form_class=envioForm
-#     success_url=reverse_lazy("inv:envio_view")
-#     login_url="bases:login"
-#     def form_valid(self,form):
-#         form.instance.uc=self.request.user
-#         return super().form_valid(form)
-
-# class envioDel(LoginRequiredMixin,generic.DeleteView):
-#     model=envio
-#     template_name='inv/envio_del.html'
-#     context_object_name='obj'
-#     success_url=reverse_lazy("inv:envio_view")
 
 
 # class reporte_excel(LoginRequiredMixin,sin_privilegios,generic.ListView):

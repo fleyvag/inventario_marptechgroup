@@ -16,24 +16,17 @@ class ClienteForm(forms.ModelForm):
                 'class': 'form-control'
             })
 class envioForm(forms.ModelForm):
+    fecha_programada=forms.DateInput()
+    fecha_revisada=forms.DateInput()
     class Meta:
         model=envio
-        fields=['detalle','ncompra','condicion','fecha_programada','fecha_revisada']
-        
-        labels={'detalle':"detalle",
-        'ncompra':"numero de compras",
-        'condicion':"condicion",
-        'fecha_programada':"fecha programada",
-        'fecha_revisada':"fecha de recepcion",
-        }
-       
-
+        fields=['detalle','ncompra','condicionenvio','fecha_programada','fecha_revisada']
+        exclude = ['um','fm','uc','fc']
     def __init__(self,*args,**kwargs):
+        label={'condicionenvio':"condicion"}
         super().__init__(*args,**kwargs)
         for field in iter(self.fields):
             self.fields[field].widget.attrs.update({
                 'class':'form-control'
             })
-            
-        self.fields['fecha_programada'].required = True,
-        self.fields['fecha_revisada'].widget.attrs['readonly']=True
+        

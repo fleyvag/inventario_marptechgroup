@@ -1,25 +1,38 @@
-<div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        
-      <form method="POST" role="form"  id="formulario" class="form-inline" action="{% url  'fac:envio_new' %}" >
+
+  {% extends 'base/base.html'%}
+{% block page_content %}
+ <!-- Dropdown Card Example -->
+ <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Listado de envios</h6>
+      <div class="dropdown no-arrow">
+      
+        </div>
+      </div>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+        <form method="POST" role="form" class="form-inline" action="{% url 'fac:envio_edit' obj.pk %}" >
       
           
           {% csrf_token%}
         <div class="col-xl-12 col-md-12 mb-12">
-         
-            
-            <div class="card border-left-success shadow h-100 py-2">
+          
+          
+          <div class="card border-left-warning shadow h-100 py-2">
             
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                   Nuevo  Envio
+                  editar Envio
                   </div>
                   <div class="dropdown-divider"></div>
                   <div class="row">
-                    {{ form.as_p }}
-<!--                       
+                    <!-- {{ form.as_p }} -->
+
+                                          
                     <div class="col-6">
                       <div class="form-group">
                           <label for="id_fecha_compra">detalle:</label>
@@ -34,22 +47,24 @@
                   </div>
                  
                       <div class="form-group">
+                        <label for="id_condicionenvio">Condicion:</label>
                        
-                        {{form.estado}}
+                        {{form.condicionenvio}}
                          
                       </div>
                       <div class="form-group">
                           <label for="id_descripcion">Fecha programada:</label>
                           
-                          <input type="date" name="fecha_programada" class="form-control" id="id_fecha_programada" >   
-                          {{form.fecha_programada}}
+                          <input type="date" name="fecha_programada" value="{{ obj.fecha_programada|date:'Y-m-d' }}" class="form-control" id="id_fecha_programada" >   
+                          
                       </div>
                       <div class="form-group">
                         <label for="id_descripcion">Fecha que se entrego:</label>
-                        {{form.fecha_revisada}}
-                        <input type="date" name="fecha_revisada" class="form-control calendario" id="id_fecha_revisada"  >
+                        
+                        <input type="date" name="fecha_revisada" value="{{ obj.fecha_revisada|date:'Y-m-d' }}" class="form-control calendario" id="id_fecha_revisada"  >
                     </div>
-                  </div> -->
+                  </div>
+
               </div>
                     
                   </div>
@@ -57,10 +72,7 @@
                   <div class="row">
                       <div class="col">
                           <button type="submit"   class="btn btn-danger"><span class="fa fa-save"></span>Guardar</button>
-                          <button type="button" class="btn btn-success" onClick="return cerrar_modal()">
-                            Cancelar
-                          </button>
-  
+                          <a href="{% url 'fac:envio_view'%}" class="btn btn-success"><span class=" fa fa-undo"></span>Cancelar</a>
                         </div>
                   </div>           
                 </div>
@@ -69,12 +81,17 @@
           </div>
         </div>
       </form>
-    </div>  
+    
+
+
+        
+    </div>
   </div>
-  <script>
-       
+{% endblock %}
+{% block js_page %}
 
- 
+{% endblock %}
 
 
-  </script>
+
+

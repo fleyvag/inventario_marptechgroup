@@ -275,6 +275,18 @@ class envioNew(sin_privilegios,generic.CreateView):
     def form_valid(self,form):
         form.instance.uc=self.request.user
         return super().form_valid(form)
+class envioEdit(sin_privilegios,generic.UpdateView,):
+    permission_required="inv.view_categoria"
+    model=envio
+    template_name="fac/envio_edit.html"
+    context_object_name="obj"   
+    form_class=envioForm
+    success_url=reverse_lazy("fac:envio_view")
+    login_url="bases:login" 
+    
+    def form_valid(self,form):
+        form.instance.um=self.request.user.id
+        return super().form_valid(form)
         
 
 class envioDel(sin_privilegios,generic.DeleteView):

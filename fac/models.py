@@ -118,11 +118,25 @@ def detalle_fac_guardar(sender,instance,**kwargs):
         prod.existencia = cantidad
         prod.save()
 class envio(ClaseModelo):
+    EP='en espera'
+    EC='Entr.correctamente'
+    ET='Entr.retraso'
+    PA='P.anulado'
+    CONDICION = [
+        (EP,'en espera'),
+        (EC,'entregado correctamente'),
+        (ET,'entregado con retraso'),
+        (PA,'pedido anulado'),
+    ]
     detalle=models.TextField(max_length=300,null=False)
     ncompra=models.CharField(max_length=100)
-    condicion=models.CharField(max_length=100)
-    fecha_programada=models.DateField(blank=True,null=True)
-    fecha_revisada=models.DateField(blank=True,null=True)
+    condicionenvio=models.CharField(
+        max_length=25,
+        choices=CONDICION,
+        default=EP
+    )
+    fecha_programada=models.DateField()
+    fecha_revisada=models.DateField()
     
     
     def __str__(self):
@@ -132,4 +146,6 @@ class envio(ClaseModelo):
         super(envio,self).save()
     class Meta:
         verbose_name_plural = "envios"
+
+
 

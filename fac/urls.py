@@ -3,7 +3,7 @@ from django.urls import path, include
 from .views import ClienteView,ClienteNew,ClienteEdit,clienteInactivar, \
     FacturaView, facturas, \
     ProductoView, \
-    borrar_detalle_factura,envioView,envioNew,envioDel
+    borrar_detalle_factura,envioView,envioNew,envioDel,envioEdit
 
 from .reportes import imprimir_factura_recibo, imprimir_factura_list
 
@@ -30,5 +30,6 @@ urlpatterns = [
     # RUTAS DE LOS envios
     path('envios/',envioView.as_view(),name='envio_view'),
     path('envios/new',envioNew.as_view(),name='envio_new'),
+    path('envios/edit/<int:pk>',envioEdit.as_view(),name='envio_edit'),
     path('envios/del/<int:pk>',envioDel.as_view(),name='envio_del'),
 ]
