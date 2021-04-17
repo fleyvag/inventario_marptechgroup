@@ -13,7 +13,12 @@
     </div>
     <!-- Card Body -->
     <div class="card-body">
+            {% if obj %} 
         <form method="POST" role="form" class="form-inline" action="{% url 'fac:envio_edit' obj.pk %}" >
+            {% else %}
+        <form method="POST" role="form" class="form-inline" action="{% url  'fac:envio_new' %}" >
+            
+            {% endif %}
       
           
           {% csrf_token%}

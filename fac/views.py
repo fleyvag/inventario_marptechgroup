@@ -267,7 +267,7 @@ class envioView(sin_privilegios,generic.ListView):
 class envioNew(sin_privilegios,generic.CreateView):
     permission_required="inv.view_categoria"
     model=envio
-    template_name="fac/envio_form.html"
+    template_name="fac/envio_edit.html"
     context_object_name="obj"
     form_class=envioForm
     success_url=reverse_lazy("fac:envio_view")

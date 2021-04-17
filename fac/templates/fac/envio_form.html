@@ -18,8 +18,8 @@
                   </div>
                   <div class="dropdown-divider"></div>
                   <div class="row">
-                    {{ form.as_p }}
-<!--                       
+                  
+                      
                     <div class="col-6">
                       <div class="form-group">
                           <label for="id_fecha_compra">detalle:</label>
@@ -29,27 +29,28 @@
                   </div>
                   <div class="col-6">
                     <div class="form-group">
-                      <label for="id_descripcion">n° detalle compra:</label>
+                      <label for="">n° detalle compra:</label>
                       {{form.ncompra}}
                   </div>
                  
-                      <div class="form-group">
+                      <div class="form-group d-inline"><br>
                        
-                        {{form.estado}}
+                        {{form.condicionenvio}}
                          
                       </div>
-                      <div class="form-group">
+                      <div class="form-group ">
+                        
                           <label for="id_descripcion">Fecha programada:</label>
                           
                           <input type="date" name="fecha_programada" class="form-control" id="id_fecha_programada" >   
-                          {{form.fecha_programada}}
+                        
                       </div>
                       <div class="form-group">
                         <label for="id_descripcion">Fecha que se entrego:</label>
-                        {{form.fecha_revisada}}
+                        
                         <input type="date" name="fecha_revisada" class="form-control calendario" id="id_fecha_revisada"  >
                     </div>
-                  </div> -->
+                  </div>
               </div>
                     
                   </div>
