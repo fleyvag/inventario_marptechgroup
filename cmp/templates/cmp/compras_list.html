@@ -50,7 +50,7 @@
                       <td>{% if item.estado  %} <i class="fas fa-circle"style="color:green" ></i> {% else %} <i class="fas fa-circle"style="color:red" ></i> {% endif %}{{item.estado|yesno:"Activo,Inactivo"}}</td>
                       <td>
                           <a href="{% url 'cmp:compras_edit' item.id %}"   class="btn btn-warning btn-circle"><i class="far fa-edit"></i></a>
-                          <a href="{% url 'cmp:compras_print_one' item.id %}"  target="reportes" class="btn btn-success btn-circle"><i class="far fa-edit"></i></a>
+                          <a href="{% url 'cmp:compras_print_one' item.id %}"  target="reportes" class="btn btn-success btn-circle"><i class="fas fa-print"></i></a>
 
                           
                           
