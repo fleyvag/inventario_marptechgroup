@@ -135,8 +135,8 @@ class envio(ClaseModelo):
         choices=CONDICION,
         default=EP
     )
-    fecha_programada=models.DateField()
-    fecha_revisada=models.DateField()
+    fecha_programada=models.DateField(null=True,blank=True)
+    fecha_revisada=models.DateField(null=True,blank=True)
     
     
     def __str__(self):
