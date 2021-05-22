@@ -42,6 +42,7 @@
                   <th>U.M.</th>
                   <th>fisico</th>
                   <th>diferencia</th>
+                  <th>porcentaje</th>
               </thead>
               <tbody>
                   {%for item in obj  %}
@@ -55,6 +56,7 @@
                       <td>{{item.unidad_medida}}</td>
                       <td><input type="text"id="{{item.codigo}}" style="width:100px" placeholder="0"></td>
                       <td > <input type="text " id="{{item.codigo}}-1" class="conteo" value="0" size="8" disabled>  </td>
+                      <td > <input type="number" id="{{item.codigo}}-y" class="porcentajes" value="0" size="8" disabled>  </td>
                       
                   </tr>
                   {% endfor %}
@@ -84,7 +86,9 @@ $('#{{item.codigo}}').change(function(){
         let fisico = +$("#{{item.codigo}}").val();
         let logico= +$("#{{item.codigo}}-x").val();
         let precision =Math.abs(fisico - logico);
+        let porcentaje=Math.round((1-(precision/logico))*100);
         $("#{{item.codigo}}-1").val(precision);
+        $("#{{item.codigo}}-y").val(porcentaje);
        
  });
  

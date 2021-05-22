@@ -61,18 +61,33 @@ $('.conteo').each(function() {
   if($(this).val()>0){
   contador=contador+1}
 });
+var sum = 0;
+$('.porcentajes').each(function() {
+  sum += parseFloat($(this).val());
+});
 
 var n1=$("#totalcampos").val()
 $('#id_total').val(nFilas-1)
-$('#id_diferencias').val(contador)
 var total=$('#id_total').val()
+
+$('#id_diferencias').val(contador)
 var diferencias= $('#id_diferencias').val();
+
+
+//sumatoria
+
+
+
+
+// var porcentajeprom =
 if(diferencias == 0 ){
 
   $('#id_porcentaje').val("100")
 }else{
-  var porcentaje=((1-(diferencias/(total)))*100)
-  var valor=porcentaje.toFixed(2)
+  // var porcentaje=((1-(diferencias/(total)))*100)
+  // var valor=porcentaje.toFixed(2)
+  porcentaje=(sum/total)
+  valor=porcentaje.toFixed(2)
 $('#id_porcentaje').val(valor)
 }
 
