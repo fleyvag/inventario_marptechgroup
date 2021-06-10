@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
+from django.views import View
 from bases.views import sin_privilegios
 
 
@@ -317,11 +318,40 @@ class precisionlist(LoginRequiredMixin,sin_privilegios,generic.ListView):
 
 
 
-# class reporte_excel(LoginRequiredMixin,sin_privilegios,generic.ListView):
-#     def get(self,request,*arg,**kwargs):
-#         productos=Producto.objects.all()
-#         wb=Workbook()
-#         ws = wb.active
+class reporte_excel(View):
+    def get(self,request,*arg,**kwargs):
+        productos=Producto.objects.all()
+        wb=Workbook()
+        ws = wb.active
+        ws['B1']='REPORTE DE PRODUCTOS'
+        ws.merge_cells('B1:G2')
+        ws['B3']='codigo'
+        ws['C3']='descripción'
+        ws['D3']='cdigo barra'
+        ws['E3']='precio'
+        ws['F3']='existencia'
+        ws['G3']='marca'
+        
+       
+        cont=4
+        for producto in productos:
+            ws.cell(row=cont,column=2).value=producto.codigo
+            ws.cell(row=cont,column=3).value=producto.descripcion
+            ws.cell(row=cont,column=4).value=producto.codigo_barra
+            ws.cell(row=cont,column=5).value=producto.precio
+            ws.cell(row=cont,column=6).value=producto.existencia
+            ws.cell(row=cont,column=7).value=producto.marca.descripcion
+            
+            cont+=1
+        nombre_archivo="ReporteProductosExcel.xlsx"
+        response= HttpResponse(content_type="application/ms-excel")
+        content="attachment; filename={0}".format(nombre_archivo)
+        response['Content-Disposition']=content
+        wb.save(response)
+        return response
+
+
+
 
 
 

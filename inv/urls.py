@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import CategoriaView,CategoriaNew,CategoriaEdit, \
     categoria_inactivar , \
-        SubCategoriaView,SubCategoriaNew,SubCategoriaEdit,sub_inactivar,MarcaView,MarcaNew,MarcaEdit,marca_inactivar,UMView,UMNew,UMEdit,um_inactivar,ProductoView,ProductoEdit,ProductoNew,producto_inactivar,reporteprecisionView,guardarprecision,precisionlist
+        SubCategoriaView,SubCategoriaNew,SubCategoriaEdit,sub_inactivar,MarcaView,MarcaNew,MarcaEdit,marca_inactivar,UMView,UMNew,UMEdit,um_inactivar,ProductoView,ProductoEdit,ProductoNew,producto_inactivar,reporteprecisionView,guardarprecision,precisionlist,reporte_excel
 from .reportes import producto_total
 urlpatterns=[
     #RUTAS DE LAS CATEGORIAS
@@ -46,7 +46,8 @@ urlpatterns=[
     
     
     path('productos/listado',producto_total,name='productos_print'),
-
+    #excel
+    path('reporteproductoexcel',reporte_excel.as_view(),name='reporteexcelproducto'),
     
 
 
