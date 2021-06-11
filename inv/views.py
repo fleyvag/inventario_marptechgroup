@@ -343,7 +343,7 @@ class reporte_excel(View):
         ws.merge_cells('B1:F2')
         
         ws.column_dimensions['B'].width=15
-        ws.column_dimensions['C'].width=30
+        ws.column_dimensions['C'].width=50
         ws.column_dimensions['D'].width=15
         ws.column_dimensions['E'].width=15
         ws.column_dimensions['F'].width=15
