@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required,permission_required
 from .models import Categoria,SubCategoria,Marca,UnidadMedida,Producto,historiareporte
 from .forms import CategoriaForm,SubCategoriaForm,MarcaForm,UMForm,ProductoForm,precisionForm
 from openpyxl import Workbook
+from openpyxl.styles import Alignment,Border,Side,PatternFill,Font
 from django.http.response import HttpResponse
 
 # Create your views here.
@@ -323,24 +324,47 @@ class reporte_excel(View):
         productos=Producto.objects.all()
         wb=Workbook()
         ws = wb.active
+        ws['B1'].alignment=Alignment(horizontal="center",vertical="center")
+        ws['C3'].alignment=Alignment(horizontal="center",vertical="center")
+        ws['D3'].alignment=Alignment(horizontal="center",vertical="center")
+        ws['E3'].alignment=Alignment(horizontal="center",vertical="center")
+        ws['F3'].alignment=Alignment(horizontal="center",vertical="center")
+       
+        ws['B1'].border=Border(left=Side(border_style="thin"),right=Side(border_style="thin"),top=Side(border_style="thin"),bottom=Side(border_style="thin"))
+        ws['B1'].fill=PatternFill(start_color="B8CCE4",end_color="B8CCE4",fill_type="solid")
+        ws['B1'].font=Font(name='calibri',bold=True)
+        ws['B3'].font=Font(bold=True)
+        ws['C3'].font=Font(bold=True)
+        ws['D3'].font=Font(bold=True)
+        ws['E3'].font=Font(bold=True)
+        ws['F3'].font=Font(bold=True)
+       
         ws['B1']='REPORTE DE PRODUCTOS'
-        ws.merge_cells('B1:G2')
-        ws['B3']='codigo'
+        ws.merge_cells('B1:F2')
+        
+        ws.column_dimensions['B'].width=15
+        ws.column_dimensions['C'].width=30
+        ws.column_dimensions['D'].width=15
+        ws.column_dimensions['E'].width=15
+        ws.column_dimensions['F'].width=15
+       
+
+        ws['B3']='código'
         ws['C3']='descripción'
-        ws['D3']='cdigo barra'
-        ws['E3']='precio'
-        ws['F3']='existencia'
-        ws['G3']='marca'
+        ws['D3']='precio'
+        ws['E3']='existencia'
+        ws['F3']='marca'
+       
         
        
         cont=4
         for producto in productos:
             ws.cell(row=cont,column=2).value=producto.codigo
             ws.cell(row=cont,column=3).value=producto.descripcion
-            ws.cell(row=cont,column=4).value=producto.codigo_barra
-            ws.cell(row=cont,column=5).value=producto.precio
-            ws.cell(row=cont,column=6).value=producto.existencia
-            ws.cell(row=cont,column=7).value=producto.marca.descripcion
+            ws.cell(row=cont,column=4).value=producto.precio
+            ws.cell(row=cont,column=5).value=producto.existencia
+            ws.cell(row=cont,column=6).value=producto.marca.descripcion
+           
             
             cont+=1
         nombre_archivo="ReporteProductosExcel.xlsx"
