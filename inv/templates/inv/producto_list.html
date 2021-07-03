@@ -53,12 +53,12 @@
               <tbody>
                   {%for item in obj  %}
                   <tr>
-                      <td style="max-width:150px;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="{{item.subcategoria}}">{{item.subcategoria}}</td>
+                      <td style="max-width:10px;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="{{item.subcategoria}}">{{item.subcategoria}}</td>
                       <td>{{item.codigo}}</td>
-                      <td style="max-width:150px;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="{{item.codigo_barra}}">{{item.codigo_barra}}</td>
+                      <td style="max-width:100px;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="{{item.codigo_barra}}">{{item.codigo_barra}}</td>
                       <td style="max-width:150px;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="{{item.descripcion}}">{{item.descripcion}}</td>
                       <td>{% if item.existencia > 1  %} <i class="fas fa-circle"style="color:green" ></i> {% else %} <i class="fas fa-circle"style="color:red" ></i> {% endif %}{{item.existencia}}</td>
-                      <td style="max-width:150px;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="{{item.marca}}">{{item.marca}}</td>
+                      <td style="max-width:100px;overflow:hidden; white-space:nowrap;text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="{{item.marca}}">{{item.marca}}</td>
                       <td>{{item.precio}}</td>
                       <td>{{item.unidad_medida}}</td>
                       <td>{% if item.estado  %} <i class="fas fa-circle"style="color:green" ></i> {% else %} <i class="fas fa-circle"style="color:red" ></i> {% endif %}{{item.estado|yesno:"Activo,Inactivo"}}</td>
