@@ -92,9 +92,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':'db_djfullinvmarptech',
         'HOST':'localhost',
-        'USER':'postgres',
-        'PASSWORD':'postgremarptech',
-        'PORT':'5432',
+        'USER':'marcelino',
+        'PASSWORD':'testing2323',
+        'PORT':'',
+        # 'PORT':'5432',
         # 
         
     }
