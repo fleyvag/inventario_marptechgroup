@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'nvysbv+6=zkb_^s8q+@()j(_zcwqj8th7ak!s0@yfm6_9zjr1x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['206.189.191.80']
+ALLOWED_HOSTS = []
 # 127.0.0.1
 
 
@@ -92,9 +92,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':'db_djfullinvmarptech',
         'HOST':'localhost',
-        'USER':'marcelino',
-        'PASSWORD':'testing2323',
-        'PORT':'',
+        'USER':'postgres',
+        'PASSWORD':'123456',
+        'PORT':'5432',
         # 'PORT':'5432',
         # 
         
@@ -139,10 +139,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
-STATIC_ROOT = os.path.join(BASE_DIR,'static_root')
-MEDIA_ROOT = os.path.join(BASE_DIR,'media_root')
+STATICFILES_DIRS= [os.path.join(BASE_DIR,'static'),]
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/login/'
 
