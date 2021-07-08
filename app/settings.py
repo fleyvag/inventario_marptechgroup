@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-from decouple import config
-import dj_database_url 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,16 +21,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'nvysbv+6=zkb_^s8q+@()j(_zcwqj8th7ak!s0@yfm6_9zjr1x'
-SECRET_KEY =config("SECRET_KEY")
+SECRET_KEY = 'nvysbv+6=zkb_^s8q+@()j(_zcwqj8th7ak!s0@yfm6_9zjr1x'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*","herokuapp.com"]
+ALLOWED_HOSTS = ['206.189.191.80']
 # 127.0.0.1
 
 
 # Application definition
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -58,7 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_userforeignkey.middleware.UserForeignKeyMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
     
 ]
 
@@ -92,7 +93,7 @@ DATABASES = {
         'NAME':'db_djfullinvmarptech',
         'HOST':'localhost',
         'USER':'postgres',
-        'PASSWORD':'123456',
+        'PASSWORD':'postgremarptech',
         'PORT':'5432',
         # 
         
@@ -135,11 +136,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+
 STATIC_URL = '/static/'
-STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+MEDIA_URL = '/media/'
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR,'static_root')
+MEDIA_ROOT = os.path.join(BASE_DIR,'media_root')
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/login/'
-db_from_env=dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+
