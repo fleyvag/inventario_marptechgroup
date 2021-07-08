@@ -26,7 +26,7 @@ SECRET_KEY = 'nvysbv+6=zkb_^s8q+@()j(_zcwqj8th7ak!s0@yfm6_9zjr1x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['206.189.191.80']
 # 127.0.0.1
 
 
@@ -92,9 +92,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME':'db_djfullinvmarptech',
         'HOST':'localhost',
-        'USER':'postgres',
-        'PASSWORD':'123456',
-        'PORT':'5432',
+        'USER':'marcelino',
+        'PASSWORD':'testing2323',
+        'PORT':'',
         # 'PORT':'5432',
         # 
         
